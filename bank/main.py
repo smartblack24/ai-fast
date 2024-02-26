@@ -1,10 +1,13 @@
 import os
+from dotenv import load_dotenv
 from langchain.llms.openai import OpenAI
 from langchain.llms.bedrock import Bedrock
 from langchain_google_genai import GoogleGenerativeAI
 from langchain.prompts import PromptTemplate
 from langchain.chains import SimpleSequentialChain
 from langchain.chains import LLMChain
+
+load_dotenv()
 
 PROMPT_TEMPLATE_TEXT = """
 Generate a table in CSV format from the following bank statement data.
@@ -26,19 +29,19 @@ Then write a Python script to sum this data by 'Category' and print the results.
 llm_open_ai = OpenAI(max_tokens=1024)
 
 # AWS Bedrock LLM
-BEDROCK_CLAUDE_MODEL = "anthropic.claude-v2"
-BEDROCK_LLAMA_MODEL = "meta.llama2-70b-chat-v1"
-llm_bedrock = Bedrock(
-    credentials_profile_name="default",
-    model_id=BEDROCK_CLAUDE_MODEL,
-    model_kwargs={"max_tokens_to_sample": 1024},
-)
+# BEDROCK_CLAUDE_MODEL = "anthropic.claude-v2"
+# BEDROCK_LLAMA_MODEL = "meta.llama2-70b-chat-v1"
+# llm_bedrock = Bedrock(
+#     credentials_profile_name="default",
+#     model_id=BEDROCK_CLAUDE_MODEL,
+#     model_kwargs={"max_tokens_to_sample": 1024},
+# )
 
 # Google Gemini LLM
 llm_gemini = GoogleGenerativeAI(
     model="gemini-pro",
     max_output_tokens=1024,
-    google_api_key=os.environ["GOOGLE_AI_API_KEY"],
+    google_api_key=os.getenv["GOOGLE_AI_API_KEY"],
 )
 
 llm = llm_gemini  # Or llm_bedrock or llm_open_ai.
