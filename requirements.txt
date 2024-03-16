@@ -1,4 +1,8 @@
 langchain
+unstructured
 openai
 boto3  # For AWS Bedrock
 langchain-google-genai  # For Google AI
+chromadb # Vector storage
+tiktoken  # For embeddings
+langchain_openai
