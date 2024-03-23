@@ -6,3 +6,5 @@ langchain-google-genai  # For Google AI
 chromadb # Vector storage
 tiktoken  # For embeddings
 langchain_openai
+langchain_community
+numexpr
