@@ -38,13 +38,12 @@ llm_open_ai = OpenAI(max_tokens=1024)
 # )
 
 # Google Gemini LLM
-llm_gemini = GoogleGenerativeAI(
-    model="gemini-pro",
-    max_output_tokens=1024,
-    google_api_key=os.getenv["GOOGLE_AI_API_KEY"],
-)
+# llm_gemini = GoogleGenerativeAI(
+#     model="gemini-pro",
+#     max_output_tokens=1024,
+# )
 
-llm = llm_gemini  # Or llm_bedrock or llm_open_ai.
+llm = llm_open_ai  # Or llm_bedrock or llm_open_ai.
 
 # Create the individual prompt templates.
 categorization_template = PromptTemplate.from_template(PROMPT_TEMPLATE_TEXT)
