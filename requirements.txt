@@ -8,3 +8,5 @@ tiktoken  # For embeddings
 langchain_openai
 langchain_community
 numexpr
+numpy
+requests
